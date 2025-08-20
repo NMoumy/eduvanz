@@ -22,15 +22,19 @@ export default function Home() {
             <h3 className="text-xl font-semibold mb-4">Test de typographie</h3>
             <div className="space-y-4">
               <div>
-                <h4 className="text-lg font-bold">Police Outfit appliquée</h4>
-                <p className="text-sm text-muted-foreground">Taille de police normale avec Outfit</p>
+                <h4 className="text-lg font-bold">Police Open Sans appliquée</h4>
+                <p className="text-sm text-muted-foreground">Taille de police normale avec Open Sans</p>
               </div>
               <div>
-                <p className="text-base">Paragraphe en taille normale</p>
+                <p className="text-base font-sans">Paragraphe en Open Sans (font-sans)</p>
+                <p className="text-base font-serif">Paragraphe en Georgia (font-serif)</p>
+                <p className="text-base font-mono">Paragraphe en Menlo (font-mono)</p>
+              </div>
+              <div>
                 <p className="text-sm">Paragraphe en petite taille</p>
                 <p className="text-lg">Paragraphe en grande taille</p>
               </div>
-              <div>
+              <div className="space-x-2">
                 <span className="font-light">Léger</span> |<span className="font-normal">Normal</span> |
                 <span className="font-medium">Moyen</span> |<span className="font-semibold">Semi-gras</span> |
                 <span className="font-bold">Gras</span>
