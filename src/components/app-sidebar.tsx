@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, BookOpen, Target, Settings, User, Wrench } from "lucide-react";
 
 import {
   Sidebar,
@@ -6,53 +6,93 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-// Menu items.
-const items = [
+// Menu items organisés par sections
+const mainItems = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "#",
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Outils",
     url: "#",
-    icon: Inbox,
+    icon: Wrench,
   },
   {
-    title: "Calendar",
+    title: "Cours",
+    url: "#",
+    icon: BookOpen,
+  },
+  {
+    title: "Planning",
     url: "#",
     icon: Calendar,
   },
   {
-    title: "Search",
+    title: "Projets",
     url: "#",
-    icon: Search,
+    icon: Target,
+  },
+];
+
+const accountItems = [
+  {
+    title: "Profil",
+    url: "#",
+    icon: User,
   },
   {
-    title: "Settings",
+    title: "Paramètres",
     url: "#",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarHeader className="border-b px-4 py-4">
+        <div className="flex items-center gap-2">
+          <div className="h-8 w-8 rounded bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-sm">E</span>
+          </div>
+          <span className="font-semibold text-base">Eduvanz</span>
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs font-medium text-muted-foreground mb-2">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
+                  <SidebarMenuButton asChild size="default">
+                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 text-sm">
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-xs font-medium text-muted-foreground mb-2">Compte</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {accountItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild size="default">
+                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 text-sm">
+                      <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -63,5 +103,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

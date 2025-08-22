@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { Navbar } from "@/components/navbar";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -28,10 +29,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <SidebarProvider>
             <AppSidebar />
-            <main>
-              <SidebarTrigger />
-              {children}
-            </main>
+            <div className="flex-1 flex flex-col">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+            </div>
           </SidebarProvider>
         </ThemeProvider>
       </body>
